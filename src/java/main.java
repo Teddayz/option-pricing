@@ -1,29 +1,16 @@
+
 public class Main {
-    private int rfr;
-    private float vpa;
+    private RiskFreeRate rfr;
+    private Volatility vpa;
     private int timePeriod;
 
-    public Main(int rfr, float vpa, int timePeriod) {
-        this.rfr = rfr;
-        this.vpa = vpa;
+    public Main(double rfr, double vpa, int timePeriod) {
+        this.rfr = new RiskFreeRate(rfr);
+        this.vpa = new Volatility(vpa);
         this.timePeriod = timePeriod;
     }
 
-    /**
-     * Returns true if a given risk-free-rate is a valid risk-free-rate.
-     * 
-     */
-    public static boolean isValidrfr(int test) {
-        return test >= 0;
-    }
-
-    /**
-     * Returns true if a given volatility per annum is a valid volatility per annum.
-     * 
-     */
-    public static boolean isValidvpa(float test) {
-        return test >= 0;
-    }
+    
 
     // TODO: Change this to be a valid time period in the future
     // Convert to date time then equate >= 0?
@@ -33,9 +20,10 @@ public class Main {
 
     @Override
     public String toString() {
-        return "Parameters: " + this.rfr + "%, " + this.vpa + "σ, " + this.timePeriod + "months";
+        return "Parameters: " + this.rfr.toString() + this.vpa.toString() + " " + this.timePeriod + " months";
     }
     public static void main(String[] args) {
-        System.out.println("Hello World");
+        Main main = new Main(5.0, 20.0, 3);
+        System.out.println(main.toString());
     }
 }
