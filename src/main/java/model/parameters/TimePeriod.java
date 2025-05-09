@@ -20,6 +20,10 @@ public class TimePeriod {
         }
     }
 
+    public double getTimePeriod() {
+        return this.years * 12 + this.months;
+    }
+
     @Override
     public String toString() {
         return "Time period of this option is " + this.years + " years and " +

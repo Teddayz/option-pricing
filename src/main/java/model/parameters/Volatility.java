@@ -2,16 +2,18 @@ package model.parameters;
 
 public class Volatility {
     private double rate;
+    private TimePeriod timePeriod;
 
-    public Volatility(double rate) {
+    public Volatility(double rate, TimePeriod timePeriod) {
         this.rate = rate;
+        this.timePeriod = timePeriod;
     }
     /** 
-     * Returns the volatility per annum rate.
+     * Returns the volatility for up and down factor.
      * @return double
      */
-    public double getRate() {
-        return this.rate;
+    public double getVolatility() {
+        return this.rate * Math.sqrt(this.timePeriod.getTimePeriod()/12);
     }
 
     /**
