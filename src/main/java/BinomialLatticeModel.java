@@ -1,6 +1,7 @@
 import model.option.CallOption;
 import model.option.Option;
 import model.option.PutOption;
+import model.parameters.CompoundedRFR;
 import model.parameters.RiskFreeRate;
 import model.parameters.TimePeriod;
 import model.parameters.Volatility;
@@ -8,7 +9,7 @@ import model.parameters.Volatility;
 public class BinomialLatticeModel {
 
     private final double initialStockPrice;
-    private final RiskFreeRate rfr;
+    private final CompoundedRFR rfr;
     private final Volatility vpa;
     private final TimePeriod timePeriod;
     private final Option option;
@@ -18,7 +19,7 @@ public class BinomialLatticeModel {
     public BinomialLatticeModel(double initialStockPrice, double rfr,
                                 double vpa, int years, int months, Option option) {
         this.initialStockPrice = initialStockPrice;
-        this.rfr = new RiskFreeRate(rfr);
+        this.rfr = new CompoundedRFR(rfr);
         this.timePeriod = new TimePeriod(years, months);
         this.vpa = new Volatility(vpa, this.timePeriod);
         this.option = option;

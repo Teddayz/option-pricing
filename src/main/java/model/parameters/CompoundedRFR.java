@@ -1,18 +1,17 @@
 package model.parameters;
 
-public class RiskFreeRate {
-    
+public class CompoundedRFR {
     private double rate;
 
-    public RiskFreeRate(double rate) {
-        this.rate = rate;
+    public CompoundedRFR(double rate) {
+        this.rate = Math.exp(rate);
     }
 
     /**
      * Returns true if a given risk-free-rate is a valid risk-free-rate.
-     * 
+     *
      */
-    public static boolean isValidRiskFreeRate(RiskFreeRate test) {
+    public static boolean isValidRiskFreeRate(CompoundedRFR test) {
         return test.getRate() >= 0 & test.getRate() <= 1.0;
     }
 
@@ -30,7 +29,7 @@ public class RiskFreeRate {
             return false;
         }
 
-        RiskFreeRate that = (RiskFreeRate) other;
+        CompoundedRFR that = (CompoundedRFR) other;
         return Double.compare(this.rate, that.rate) == 0;
     }
 

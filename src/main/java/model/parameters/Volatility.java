@@ -24,6 +24,20 @@ public class Volatility {
         return test.getVolatility() >= 0;
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+
+        if (!(other instanceof Volatility)) {
+            return false;
+        }
+
+        Volatility that = (Volatility) other;
+        return Double.compare(this.rate, that.rate) == 0;
+    }
+
     @Override 
     public String toString() {
         return "Volatility per annum is " + this.rate + "%";
