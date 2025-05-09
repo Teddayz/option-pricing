@@ -1,3 +1,5 @@
+package model;
+
 public class Volatility {
     private double rate;
 

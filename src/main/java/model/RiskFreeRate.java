@@ -1,5 +1,7 @@
+package model;
 
 public class RiskFreeRate {
+    
     private double rate;
 
     public RiskFreeRate(double rate) {
