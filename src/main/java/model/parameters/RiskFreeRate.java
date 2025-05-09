@@ -1,4 +1,4 @@
-package model;
+package model.parameters;
 
 public class RiskFreeRate {
     
@@ -12,7 +12,7 @@ public class RiskFreeRate {
      * Returns true if a given risk-free-rate is a valid risk-free-rate.
      * 
      */
-    public static boolean isValidrfr(double test) {
+    public static boolean isValidRiskFreeRate(double test) {
         return test >= 0;
     }
 

@@ -1,6 +1,6 @@
-import model.RiskFreeRate;
-import model.Volatility;
-import model.TimePeriod;
+import model.parameters.RiskFreeRate;
+import model.parameters.TimePeriod;
+import model.parameters.Volatility;
 
 public class Main {
 

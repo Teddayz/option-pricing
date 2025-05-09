@@ -1,4 +1,4 @@
-package model;
+package model.parameters;
 
 public class Volatility {
     private double rate;
@@ -18,7 +18,7 @@ public class Volatility {
      * Returns true if a given volatility per annum is a valid volatility per annum.
      *  
      */
-    public static boolean isValidvpa(float test) {
+    public static boolean isValidVolatility(float test) {
         return test >= 0;
     }
 
