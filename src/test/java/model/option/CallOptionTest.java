@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class CallOptionTest {
     @Test
-    public void calculatePayoffReturnsCorrectOutput() {
+    public void calculateCallOptionPayoffReturnsCorrectOutput() {
         CallOption callOption = new CallOption(50.0);
 
         double stockPrice = 50.0;
