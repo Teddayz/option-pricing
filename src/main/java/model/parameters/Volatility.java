@@ -13,15 +13,15 @@ public class Volatility {
      * @return double
      */
     public double getVolatility() {
-        return this.rate * Math.sqrt(this.timePeriod.getTimePeriod()/12);
+        return this.rate * Math.sqrt(this.timePeriod.getTimePeriod() /12);
     }
 
     /**
      * Returns true if a given volatility per annum is a valid volatility per annum.
      *  
      */
-    public static boolean isValidVolatility(float test) {
-        return test >= 0;
+    public static boolean isValidVolatility(Volatility test) {
+        return test.getVolatility() >= 0;
     }
 
     @Override 

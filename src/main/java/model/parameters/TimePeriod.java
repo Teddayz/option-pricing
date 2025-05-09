@@ -2,22 +2,30 @@ package model.parameters;
 
 public class TimePeriod {
 
-    private int years;
-    private int months;
+    private final int years;
+    private final int months;
 
     public TimePeriod(int years, int months) {
         this.years = years;
         this.months = months;
     }
 
-    public static boolean isValidTimePeriod(int testYear, int testMonth) {
-        if (testYear < 0) {
+    public static boolean isValidTimePeriod(TimePeriod test) {
+        if (test.getMonths() > 11 | test.getMonths() < 0) {
             return false;
-        } else if (testYear == 0) {
-            return testMonth > 0;
+        } else if (test.getYears() < 0) {
+            return false;
         } else {
-            return testMonth >= 0;
+            return test.getTimePeriod() > 0;
         }
+    }
+
+    public int getYears() {
+        return this.years;
+    }
+
+    public int getMonths() {
+        return this.months;
     }
 
     public double getTimePeriod() {
@@ -26,8 +34,22 @@ public class TimePeriod {
 
     @Override
     public String toString() {
-        return "Time period of this option is " + this.years + " years and " +
-         this.months + " months";
+        return "Time period of this option is " + this.getTimePeriod() + " number of months";
     }
-    
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof TimePeriod)) {
+            return false;
+        }
+
+        TimePeriod otherTimePeriod = (TimePeriod) other;
+        return this.getTimePeriod() == otherTimePeriod.getTimePeriod();
+    }
+
 }
