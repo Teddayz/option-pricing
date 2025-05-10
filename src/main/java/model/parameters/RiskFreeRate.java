@@ -3,6 +3,7 @@ package model.parameters;
 public class RiskFreeRate {
     
     private double rate;
+    public static String invalidMessage = "Risk Free Rate must be between 0 and 1";
 
     public RiskFreeRate(double rate) {
         this.rate = rate;

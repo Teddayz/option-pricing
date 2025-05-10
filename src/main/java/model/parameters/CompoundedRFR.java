@@ -7,14 +7,6 @@ public class CompoundedRFR {
         this.rate = Math.exp(rate);
     }
 
-    /**
-     * Returns true if a given risk-free-rate is a valid risk-free-rate.
-     *
-     */
-    public static boolean isValidRiskFreeRate(CompoundedRFR test) {
-        return test.getRate() >= 0 & test.getRate() <= 1.0;
-    }
-
     public double getRate() {
         return this.rate;
     }
@@ -25,7 +17,7 @@ public class CompoundedRFR {
             return true;
         }
 
-        if (!(other instanceof RiskFreeRate)) {
+        if (!(other instanceof CompoundedRFR)) {
             return false;
         }
 
@@ -35,6 +27,6 @@ public class CompoundedRFR {
 
     @Override
     public String toString() {
-        return "Risk-free interest rate is " + this.rate + "% ";
+        return "Compounded risk-free interest rate is " + this.rate + "% ";
     }
 }
