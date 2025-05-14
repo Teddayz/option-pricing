@@ -11,7 +11,6 @@ import static model.parameters.RiskFreeRate.isValidRiskFreeRate;
 public class BinomialLatticeModel {
 
     private final double initialStockPrice;
-    private final RiskFreeRate RiskFreeRate;
     private final CompoundedRFR rfr;
     private final Volatility vpa;
     private final TimePeriod timePeriod;
@@ -22,9 +21,9 @@ public class BinomialLatticeModel {
     public BinomialLatticeModel(double initialStockPrice, double rfr,
                                 double vpa, int years, int months, Option option) {
         this.initialStockPrice = initialStockPrice;
-        this.RiskFreeRate = new RiskFreeRate(rfr);
-        if (isValidRiskFreeRate(RiskFreeRate)) {
-            this.rfr = new CompoundedRFR(RiskFreeRate);
+        RiskFreeRate riskFreeRate = new RiskFreeRate(rfr);
+        if (isValidRiskFreeRate(riskFreeRate)) {
+            this.rfr = new CompoundedRFR(riskFreeRate);
             this.timePeriod = new TimePeriod(years, months);
             this.vpa = new Volatility(vpa, this.timePeriod);
             this.option = option;
@@ -36,12 +35,32 @@ public class BinomialLatticeModel {
     }
 
     public double getOptionPrice() {
-        double riskFreeProbability = (rfr.getRate() - downFactor) / (upFactor - downFactor);
+        double riskFreeProbability = getRiskFreeProbability();
         double upStockPrice = this.initialStockPrice * upFactor;
         double upPayoff = option.calculatePayoff(upStockPrice);
         double downStockPrice = this.initialStockPrice * downFactor;
         double downPayoff = option.calculatePayoff(downStockPrice);
         return (1 / rfr.getRate()) * ((riskFreeProbability * upPayoff) + ((1 - riskFreeProbability) * downPayoff));
+    }
+
+    public double getRiskFreeProbability() {
+        return (rfr.getRate() - downFactor) / (upFactor - downFactor);
+    }
+
+    public double getUpFactor() {
+        return upFactor;
+    }
+
+    public double getDownFactor() {
+        return downFactor;
+    }
+
+    public Option getOption() {
+        return this.option;
+    }
+
+    public CompoundedRFR getCompoundedRFR() {
+        return this.rfr;
     }
 
     @Override
