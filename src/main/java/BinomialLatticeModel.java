@@ -68,11 +68,22 @@ public class BinomialLatticeModel {
         return "Parameters: " + this.rfr.toString() + this.vpa.toString() + " " + this.timePeriod.toString();
     }
     public static void main(String[] args) {
-        BinomialLatticeModel binomialLatticeModel = new BinomialLatticeModel(50, 0.05,
-                0.25, 1, 0, new PutOption(47));
-        System.out.println(binomialLatticeModel.getOptionPrice());
-        BinomialLatticeModel binomialLatticeModel1 = new BinomialLatticeModel(50, 0.05,
-                0.20,1,0,new CallOption(53));
-        System.out.println(binomialLatticeModel1.getOptionPrice());
+        BinomialLatticeModel callModel = new BinomialLatticeModel(
+                50,
+                0.05,
+                0.25,
+                1,
+                0,
+                new CallOption(47));
+        System.out.println("Call price:  " + callModel.getOptionPrice());
+
+        BinomialLatticeModel putModel = new BinomialLatticeModel(
+                50,
+                0.05,
+                0.25,
+                1,
+                0,
+                new PutOption(47));
+        System.out.println("Put price:  " + putModel.getOptionPrice());
     }
 }
