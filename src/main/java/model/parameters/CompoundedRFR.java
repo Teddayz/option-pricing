@@ -3,8 +3,8 @@ package model.parameters;
 public class CompoundedRFR {
     private double rate;
 
-    public CompoundedRFR(double rate) {
-        this.rate = Math.exp(rate);
+    public CompoundedRFR(RiskFreeRate rate) {
+        this.rate = Math.exp(rate.getRate());
     }
 
     public double getRate() {

@@ -16,15 +16,15 @@ public class BinomialLatticeModel {
     private final Volatility vpa;
     private final TimePeriod timePeriod;
     private final Option option;
-    private double upFactor;
-    private double downFactor;
+    private final double upFactor;
+    private final double downFactor;
 
     public BinomialLatticeModel(double initialStockPrice, double rfr,
                                 double vpa, int years, int months, Option option) {
         this.initialStockPrice = initialStockPrice;
         this.RiskFreeRate = new RiskFreeRate(rfr);
         if (isValidRiskFreeRate(RiskFreeRate)) {
-            this.rfr = new CompoundedRFR(rfr);
+            this.rfr = new CompoundedRFR(RiskFreeRate);
             this.timePeriod = new TimePeriod(years, months);
             this.vpa = new Volatility(vpa, this.timePeriod);
             this.option = option;
